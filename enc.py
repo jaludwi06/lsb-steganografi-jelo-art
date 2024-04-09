@@ -36,7 +36,7 @@ def handlePdf(cover_file):
 # Fungsi enkripsi gambar
 def encryptPage():
     # Unggah gambar cover
-    st.markdown("<h4 style='text-align: left;'>Upload Ganbar Cover</h4>", unsafe_allow_html=True)
+    st.markdown("<h4 style='text-align: left;'>Upload Gambar Cover</h4>", unsafe_allow_html=True)
     cover_file = st.file_uploader('', type=['png', 'jpg', 'bmp'], key="cover")
     if cover_file is not None:
         cover = Image.open(cover_file)
