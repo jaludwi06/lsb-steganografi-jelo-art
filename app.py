@@ -21,7 +21,7 @@ def decrypt_tab():
 
 # Create tabs
 tabs = ["Enkripsi", "Dekripsi"]
-selected_tab = st.radio("Aku Ingin", tabs)
+selected_tab = st.radio("Mau Ngapain?", tabs)
 
 if selected_tab == "Enkripsi":
     encrypt_tab()
