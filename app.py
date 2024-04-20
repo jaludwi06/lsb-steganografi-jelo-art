@@ -4,7 +4,7 @@ import numpy as np
 from dec import decryptPage
 from enc import encryptPage
 
-st.set_page_config(page_title="Jelo Art Studio", page_icon="🧐:", layout="wide")
+st.set_page_config(page_title="Jelo Art Studio", page_icon="🧐:", layout="middle")
 
 # Set up the Streamlit app
 st.title('Jelo Art Studio')
