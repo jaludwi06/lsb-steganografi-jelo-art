@@ -58,7 +58,7 @@ def encryptPage():
 
             # Reduce the contrast of the message image
             # enhancer = ImageEnhance.Contrast(message)
-            # message = enhancer.enhance(0.5)
+            # message = enhancer.enhance(0.1)
 
             # Menyamakan ukuran gambar cover dengan gambar pesan
             cover = resize_image(cover, message)
