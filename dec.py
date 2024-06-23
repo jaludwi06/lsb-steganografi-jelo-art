@@ -29,7 +29,7 @@ def decryptPage():
         extracted_message = np.zeros(stego.shape, dtype=np.uint8)
 
         # "Imbed" adalah jumlah bit dari gambar pesan yang akan disematkan dalam gambar sampul
-        imbed = 6
+        imbed = 5
 
         # Ekstrak bit paling tidak signifikan (LSB) dari gambar stego
         for i in range(imbed):
