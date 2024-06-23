@@ -70,7 +70,7 @@ def encryptPage():
             message = np.array(message, dtype=np.uint8)
 
             # "Imbed" adalah jumlah bit dari gambar pesan yang akan disematkan dalam gambar sampul
-            imbed = 4
+            imbed = 6
 
             # Menggeser gambar pesan sebanyak (8 - imbed) bit ke kanan
             messageshift = np.right_shift(message, 8 - imbed)
