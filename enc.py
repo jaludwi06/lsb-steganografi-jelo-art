@@ -25,11 +25,8 @@ def resize_image(cover, message):
 
 def handlePdf(cover_file):
     with tempfile.NamedTemporaryFile(suffix=".pdf", delete=False) as temp_pdf:
-                temp_pdf.write(cover_file.read())
-                cover_images = convert_from_path(temp_pdf.name, dpi=200)  # Use temporary file path
-                cover = cover_images[0]
-                os.remove(temp_pdf.name)  # Import os for file deletion
-                return cover;
+        temp_pdf.write(cover_file.read())
+        return temp_pdf.name  # Mengembalikan path ke file sementara
 
 
 
