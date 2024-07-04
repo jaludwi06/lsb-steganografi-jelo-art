@@ -76,7 +76,7 @@ def encode_image(mode,cover_image_path, input_file_path):
     else:
         raise ValueError("Tipe file tidak didukung. Gunakan gambar dengan ekstensi .png, .jpg, .jpeg, .bmp, .gif atau PDF dengan ekstensi .pdf.")
 
-    # Ensure the hidden data can fit within the cover image
+    # Pastikan data yang tersembunyi dapat masuk ke dalam cover image
     if len(combined_binary) > cover_height * cover_width * 3:
         raise ValueError("Ukuran data tersembunyi terlalu besar untuk disisipkan ke dalam gambar cover.")
 
