@@ -3,6 +3,7 @@ from PIL import Image
 import numpy as np
 from dec import decryptPage
 from enc import encryptPage
+from pdf2image import convert_from_path  
 
 st.set_page_config(page_title="Jelo Art Studio", page_icon="🧐:", layout="wide")
 
