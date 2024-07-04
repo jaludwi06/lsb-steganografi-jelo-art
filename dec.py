@@ -1,29 +1,50 @@
-import streamlit as st 
+import streamlit as st
 from PIL import Image
+from PIL import ImageEnhance
 import numpy as np
-from dec import decryptPage
-from enc import encryptPage
+import base64
+from io import BytesIO
 
-st.set_page_config(page_title="Jelo Art Studio", page_icon="🧐:", layout="wide")
+# Fungsi untuk mendownload gambar stego ke dalam bentuk 'JPG'
+def get_image_download_link(img, filename, text):
+    buffered = BytesIO()
+    if img.mode in ('RGBA', 'P'):  # Jika gambar memiliki alpha channel
+        img = img.convert('RGB')  # Konversi ke 'RGB'
+    img.save(buffered, format='JPEG')  # Gunakan 'JPEG' sebagai format penyimpanan
+    img_str = base64.b64encode(buffered.getvalue()).decode()
+    href = f'<a href="data:image/jpeg;base64,{img_str}" download="{filename}">{text}</a>'  # Use 'image/jpeg' as the MIME type
+    return href
 
-# Set up the Streamlit app
-st.title('Jelo Art Studio')
-st.header('Apa yang mau dilakukan kali ini? 🧐')
+# Fungsi dekripsi gambar
+def decryptPage():
+    st.markdown("<h4 style='text-align: left;'>Upload Stego Image</h4>", unsafe_allow_html=True)
+    stego_file = st.file_uploader('', type=['png', 'jpg', 'bmp', 'tiff'],key="decrypt")
+    if stego_file is not None:
+        stego = Image.open(stego_file)
 
-st.write("---")
+        # Ubah menjadi double untuk manipulasi
+        stego = np.array(stego, dtype=np.uint8)
 
-# Define tab content functions
-def encrypt_tab():
-  encryptPage()
+        # Inisialisasi pesan yang diekstrak
+        extracted_message = np.zeros(stego.shape, dtype=np.uint8)
 
-def decrypt_tab():
-  decryptPage()
+        # "Imbed" adalah jumlah bit dari gambar pesan yang akan disematkan dalam gambar sampul
+        imbed = 4
 
-# Create tabs
-tabs = ["Enkripsi", "Dekripsi"]
-selected_tab = st.radio("Mau Ngapain?", tabs)
+        # Ekstrak bit paling tidak signifikan (LSB) dari gambar stego
+        for i in range(imbed):
+            extracted_message = extracted_message | ((stego & (1 << i)) << (8 - imbed))
 
-if selected_tab == "Enkripsi":
-  encrypt_tab()
-else:
-  decrypt_tab()
+        extracted_message = Image.fromarray(extracted_message.astype('uint8'), 'RGB')
+
+        # enhancer = ImageEnhance.Contrast(extracted_message)
+        # extracted_message = enhancer.enhance(1.0)  # Increase contrast
+
+        # Ubah ke dalam bentuk gambar seperti semula
+
+
+        # Tampilkan gambar akhir
+        st.image(extracted_message, caption='This is your hidden message')
+
+        # Tambahkan link download
+        st.markdown(get_image_download_link(extracted_message, 'result.jpg', 'Download extracted image'), unsafe_allow_html=True)
