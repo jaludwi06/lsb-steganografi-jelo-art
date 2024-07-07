@@ -37,14 +37,14 @@ def handlePdf(cover_file):
 def encryptPage():
     # Unggah gambar cover
     st.markdown("<h4 style='text-align: left;'>Upload Gambar Cover</h4>", unsafe_allow_html=True)
-    cover_file = st.file_uploader('', type=['unggah gambar cover'], key="cover")
+    cover_file = st.file_uploader('', key="cover")
     if cover_file is not None:
         cover = Image.open(cover_file)
         if cover.mode != 'RGB':
             cover = cover.convert('RGB')
         # Unggah gambar pesan
         st.markdown("<h4 style='text-align: left;'>Upload File</h4>", unsafe_allow_html=True)
-        message_file = st.file_uploader('', type=['unggah disini'], key="message")
+        message_file = st.file_uploader('', key="message")
         if message_file is not None:
             if message_file.type == 'application/pdf':
                 message = handlePdf(message_file)
