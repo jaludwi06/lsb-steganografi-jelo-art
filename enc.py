@@ -16,12 +16,6 @@ def get_image_download_link(img, filename, text):
     href = f'<a href="data:image/png;base64,{img_str}" download="{filename}">{text}</a>'
     return href
 
-# Fungsi untuk menyesuaikan ukuran cover dengan ukuran message
-def resize_image(cover, message):
-    if message.mode != 'RGB':
-        message = message.convert('RGB')
-    return cover.resize(message.size)
-
 
 def handlePdf(cover_file):
     with tempfile.NamedTemporaryFile(suffix=".pdf", delete=False) as temp_pdf:
