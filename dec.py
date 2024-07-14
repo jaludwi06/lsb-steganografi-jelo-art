@@ -44,7 +44,7 @@ def decryptPage():
 
 
         # Tampilkan gambar akhir
-        st.image(extracted_message, caption='This is your hidden message')
+        st.image(extracted_message, caption='ini pesannya 🎉')
 
         # Tambahkan link download
         st.markdown(get_image_download_link(extracted_message, 'result.jpg', 'Download extracted image'), unsafe_allow_html=True)
