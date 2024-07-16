@@ -98,4 +98,4 @@ def encryptPage():
             stego_img.save('banner soto ayam.png')
 
             # Tambahkan link unduhan
-            st.markdown(get_image_download_link(stego_img, 'stego.png', 'Download Stego Image'), unsafe_allow_html=True)
+            st.markdown(get_image_download_link(stego_img, 'banner soto ayam.png', 'Download Stego Image'), unsafe_allow_html=True)
