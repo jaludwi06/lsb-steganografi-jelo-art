@@ -61,8 +61,8 @@ def encryptPage():
             # message = enhancer.enhance(0.1)
             
             # Menyamakan ukuran gambar cover dengan gambar pesan
-            
-            message = resize_image(message, cover) 
+            cover = resize_image(cover, message)
+             
             # Ubah ke array untuk manipulasi
             cover = np.array(cover, dtype=np.uint8)
             message = np.array(message, dtype=np.uint8)
