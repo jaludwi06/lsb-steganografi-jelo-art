@@ -65,8 +65,7 @@ def encryptPage():
             message = resize_image(message, cover)
              
             # Ubah ke array untuk manipulasi
-            cover = np.array(cover, dtype=np.uint8)
-            message = np.array(message, dtype=np.uint8)
+            cover = np.array(cover, dtype=np.uint4)
 
             # Menggeser gambar pesan sebanyak (4 - imbed) bit ke kanan
             messageshift = np.right_shift(message, 4 - imbed)
