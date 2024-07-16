@@ -65,8 +65,8 @@ def encryptPage():
             message = resize_image(message, cover)
              
             # Ubah ke array untuk manipulasi
-            cover = np.array(cover, dtype=np.uint8)
             message = np.array(message, dtype=np.uint8)
+            cover = np.array(cover, dtype=np.uint8)
 
             # "Imbed" adalah jumlah bit dari gambar pesan yang akan disematkan dalam gambar sampul
             imbed = 4
