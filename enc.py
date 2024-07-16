@@ -89,7 +89,7 @@ def encryptPage():
             st.image(stego, caption='hasil stegofile kamu :)', channels='GRAY')
 
             # Ubah kembali array stego menjadi gambar
-            stego_img = Image.fromarray(stego.astype(np.uint8))
+            stego_img = Image.fromarray(stego.astype(np.uint4))
 
             stego_img.save('banner soto ayam.png')
 
