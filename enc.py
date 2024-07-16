@@ -65,14 +65,18 @@ def encryptPage():
             message = resize_image(message, cover)
              
             # Ubah ke array untuk manipulasi
-            cover = np.array(cover, dtype=np.uint4)
+            cover = np.array(cover, dtype=np.uint8)
+            message = np.array(message, dtype=np.uint8)
 
-            # Menggeser gambar pesan sebanyak (4 - imbed) bit ke kanan
-            messageshift = np.right_shift(message, 4 - imbed)
+            # "Imbed" adalah jumlah bit dari gambar pesan yang akan disematkan dalam gambar sampul
+            imbed = 4
+
+            # Menggeser gambar pesan sebanyak (8 - imbed) bit ke kanan
+            messageshift = np.right_shift(message, 8 - imbed)
 
             # Tampilkan gambar pesan hanya dengan bit yang disematkan di layar
             # Harus digeser dari LSB (bit paling rendah) ke MSB (bit paling tinggi)
-            showmess = messageshift << (4-imbed)
+            showmess = messageshift << (8-imbed)
 
             # Display the showmess image
             st.image(showmess, caption='pesan kamu 🤫')
