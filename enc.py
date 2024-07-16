@@ -59,7 +59,10 @@ def encryptPage():
             # Reduce the contrast of the message image
             # enhancer = ImageEnhance.Contrast(message)
             # message = enhancer.enhance(0.1)
-
+            
+            # Menyamakan ukuran gambar cover dengan gambar pesan
+            cover = resize_image(cover, message)
+            message = resize_image(message, cover) 
             # Ubah ke array untuk manipulasi
             cover = np.array(cover, dtype=np.uint8)
             message = np.array(message, dtype=np.uint8)
