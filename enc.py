@@ -79,7 +79,7 @@ def encryptPage():
             showmess = messageshift << (8-imbed)
 
             # Display the showmess image
-            st.image(showmess, caption='pesan kamu 🤫')
+            st.image(showmess, caption='Pesan yang Disisipkan')
 
             # Sekarang, ubah nilai bit yang disematkan menjadi nol pada gambar sampul
             coverzero = cover & ~(0b11111111 >> imbed)
@@ -90,7 +90,7 @@ def encryptPage():
             stego = np.clip(stego, 0, 255)
 
             # Tampilkan gambar stego
-            st.image(stego, caption='hasil stegofile kamu :)', channels='GRAY')
+            st.image(stego, caption='Hasil Stegofile', channels='GRAY')
 
             # Ubah kembali array stego menjadi gambar
             stego_img = Image.fromarray(stego.astype(np.uint8))
