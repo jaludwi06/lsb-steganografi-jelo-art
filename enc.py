@@ -95,7 +95,7 @@ def encryptPage():
             # Ubah kembali array stego menjadi gambar
             stego_img = Image.fromarray(stego.astype(np.uint8))
 
-            stego_img.save('banner soto ayam.png')
+            stego_img.save('stegofile.png')
 
             # Tambahkan link unduhan
-            st.markdown(get_image_download_link(stego_img, 'banner soto ayam.png', 'Download Stego Image'), unsafe_allow_html=True)
+            st.markdown(get_image_download_link(stego_img, 'stegofile.png', 'Download Stego Image'), unsafe_allow_html=True)
